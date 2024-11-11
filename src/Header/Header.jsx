@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import useActivePage from '../Hooks/useActivePage'; 
 import './Header.css';
 
 const Header = () => {
@@ -8,10 +10,18 @@ const Header = () => {
         <span className="logo-text-green">Image</span> <span className="logo-text-orange">Editor</span>
       </div>
       <nav className="nav">
-        <a href="#home" className="nav-link">Головна</a>
-        <a href="#editor" className="nav-link">Редактор</a>
-        <a href="#updates" className="nav-link active">Оновлення</a>
-        <a href="#About Use" className="nav-link">Про нас</a>
+        <Link to="/" className={`nav-link ${useActivePage('/') ? 'active' : ''}`}>
+          Головна
+        </Link>
+        <Link to="/editor" className={`nav-link ${useActivePage('/editor') ? 'active' : ''}`}>
+          Редактор
+        </Link>
+        <Link to="/updates" className={`nav-link ${useActivePage('/updates') ? 'active' : ''}`}>
+          Оновлення
+        </Link>
+        <Link to="/about" className={`nav-link ${useActivePage('/about') ? 'active' : ''}`}>
+          Про нас
+        </Link>
       </nav>
       <div className="menu-icon">
         <span>&#9776;</span>

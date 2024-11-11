@@ -1,0 +1,142 @@
+/* Основний контейнер сторінки редактора */
+.editor-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Панель конвертації */
+.editor-panel {
+    width: 460px; /* Ширина панелі редактора залишається як була */
+    background-color: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left; /* Вирівнювання вліво */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Вирівнюємо елементи */
+    height: 460px; /* Висота панелі тепер 460px */
+}
+
+/* Заголовок панелі */
+.editor-panel h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Вибір формату: два стовпці */
+.format-selection {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє елементам переноситися на новий рядок */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Мітки для форматів */
+.format-label {
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Вирівнюємо текст по центру */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffa500;
+    border-radius: 10px;
+    padding: 8px 20px;
+    width: 100%; /* Ширина 100% в межах контейнера */
+    max-width: 200px; /* Максимальна ширина */
+    box-sizing: border-box; /* Враховуємо padding в ширині */
+}
+
+/* Поля вводу та вибору формату */
+.format-input, .format-select {
+    width: 100%; /* Ширина 100% для поля вводу */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 0 auto; /* Вирівнювання по центру */
+    max-width: 200px; /* Задаємо максимальну ширину */
+}
+
+/* Кнопка конвертування */
+.convert-button {
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    min-width: 180px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Кнопка Конвертація при наведенні */
+.convert-button:hover {
+    opacity: 0.9;
+}
+
+/* Виведення даних про розміри */   
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Блок для відображення зображення */
+.image-display {
+    width: 65%;
+    text-align: center;
+    position: relative;
+    height: 500px; /* Висота для поля зображення */
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* приховуємо частини зображення, які виходять за межі */
+}
+
+.image-placeholder img {
+    max-width: 100%; /* обмежуємо ширину */
+    max-height: 100%; /* обмежуємо висоту */
+    object-fit: contain; /* зберігаємо пропорції зображення */
+    border-radius: 10px; /* повторюємо закруглення, щоб відповідало контейнеру */
+}
+
+/* Кнопка завантаження */
+.download-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    opacity: 0.9;
+}
+
+/* Виправлення для ширини полів та текстових блоків */
+.format-label, .format-input, .format-select {
+    width: 100%;
+    max-width: 200px; /* Встановлюємо максимальну ширину */
+    box-sizing: border-box; /* Враховуємо padding у ширині */
+}

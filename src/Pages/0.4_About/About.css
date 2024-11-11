@@ -1,0 +1,38 @@
+/* ./Pages/0.4_About/About.css */
+
+.about-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.section-title {
+    font-weight: bold;
+    color: #333; /* Темний колір для заголовків */
+}
+
+.first-word {
+    color: green; /* Зелений колір для "Image" */
+    font-weight: bold;
+}
+
+.second-word {
+    color: orange; /* Оранжевий колір для "Editor" */
+    font-weight: bold;
+}
+
+.support-section {
+    margin-top: 50px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.email-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.highlight-text {
+    font-weight: normal;
+}
