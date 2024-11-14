@@ -1,5 +1,5 @@
 import 'cypress-file-upload';
-//import ing from '../fixtures/converted_image.jpg'
+
 describe('Auth spec', () => {
   it('Correct registration', () => {
       cy.visit('/');
@@ -26,13 +26,13 @@ describe('Auth spec', () => {
   it('EditorPages test', () => {
     cy.visit('/');
   
-    // Переходить до редактора
+
     cy.contains('Редактор').click();
   
-    // Завантажує зображення в інпут файлу
+    
     cy.get('.file-input').attachFile('converted_image.jpg');
   
-    // Перевірка, що зображення завантажено
+
     cy.get('.image-display img').should('be.visible');
     const expectedFormats = ['JPG', 'PNG', 'GIF', 'BMP', 'WEBP', 'TIFF'];
     cy.get('.format-select').children('option').should('have.length', expectedFormats.length)
@@ -43,10 +43,10 @@ describe('Auth spec', () => {
 
     cy.contains('Конвертувати').click();
 
-    cy.get('.info-details').should('not.contain', '0 x 0 | 0 Кб | WEBP'); // Переконаємося, що значення змінилися з початкових
-    cy.get('.info-details').should('contain', 'WEBP'); // Перевірка формату
+    cy.get('.info-details').should('not.contain', '0 x 0 | 0 Кб | WEBP'); 
+    cy.get('.info-details').should('contain', 'WEBP'); 
     cy.get('.info-details').invoke('text').then((text) => {
-        expect(text).to.match(/\d+ x \d+ \| \d+ Кб \| WEBP/); // Перевірка на відповідність новим значенням
+        expect(text).to.match(/\d+ x \d+ \| \d+ Кб \| WEBP/); 
     });
   });
   it('UpdatesPage test', () => {

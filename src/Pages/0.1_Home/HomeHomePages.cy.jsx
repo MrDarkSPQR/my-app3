@@ -1,10 +1,9 @@
 import React from 'react';
 import HomePages from './Home';
-import { BrowserRouter as Router } from 'react-router-dom'; // Додайте імпорт BrowserRouter
+import { BrowserRouter as Router } from 'react-router-dom'; 
 
 describe('<HomePages />', () => {
   it('renders', () => {
-    // Обгортаємо HomePages в Router
     cy.mount(
       <Router>
         <HomePages />

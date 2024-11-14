@@ -33,7 +33,7 @@
 .nav-link.active {
   color: orange;
   font-weight: bold;
-  border: none; /* Видалено підкреслення */
+  border: none; 
 }
 
 .menu-icon {

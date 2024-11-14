@@ -1,4 +1,3 @@
-/* Основні стилі для сторінки */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +5,6 @@ body {
     background-color: #f0f0f0;
   }
   
-  /* Стиль для контейнера */
   .container {
     display: flex;
     flex-direction: column;
@@ -15,26 +13,22 @@ body {
     height: 100vh;
     text-align: center;
     background-color: #fff;
-    position: relative; /* для правильного позиціювання кнопок */
+    position: relative; 
   }
-  
-  /* Стиль для заголовка */
+ 
   h1 {
     font-size: 48px;
     margin: 20px 0;
   }
-  
-  /* Колір для першого слова */
+
   .green-text {
-    color: #28a745; /* зелений */
+    color: #28a745; 
   }
   
-  /* Колір для другого слова */
   .orange-text {
-    color: #ff9933; /* помаранчевий */
+    color: #ff9933; 
   }
-  
-  /* Стилі для кнопок */
+
   button {
     font-size: 18px;
     padding: 10px 20px;
@@ -57,25 +51,23 @@ body {
   button.select-image {
     background-color: #f7b731;
     color: white;
-    position: relative; /* Позиціюємо кнопку для правильного розташування інпуту */
+    position: relative; 
   }
   
   button.select-image:hover {
     opacity: 0.8;
   }
   
-  /* Невидимий input, але клікабельний */
   .file-input {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* робимо input невидимим */
-    cursor: pointer; /* Змінюємо курсор на pointer при наведенні */
+    opacity: 0; 
+    cursor: pointer; 
   }
-  
-  /* Позиціонування кнопок у правому верхньому куті */
+
   .auth-buttons {
     position: absolute;
     top: 20px;

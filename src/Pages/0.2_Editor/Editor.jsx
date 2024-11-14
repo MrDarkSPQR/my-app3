@@ -8,10 +8,13 @@ const Editor = () => {
   const [inputFormat, setInputFormat] = useState('PNG');
   const [imageSize, setImageSize] = useState({ width: 0, height: 0, size: 0 });
   const [outputSize, setOutputSize] = useState({ width: 0, height: 0, size: 0 });
+  const [imageFile, setImageFile] = useState(null); // Збереження об’єкта файлу для сервера
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setImageFile(file); // Зберігаємо файл для серверного запиту
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
@@ -29,51 +32,34 @@ const Editor = () => {
     }
   };
 
-  const handleConvert = () => {
-    if (image) {
-      const img = new Image();
-      img.src = image;
-      img.onload = () => {
-        // Створюємо canvas для зміни формату
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
+  const handleConvert = async () => {
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('image', imageFile); // Додаємо файл зображення
+      formData.append('format', outputFormat.toLowerCase()); // Додаємо бажаний формат
 
-        // Вибір формату для конвертації
-        if (outputFormat === 'JPG') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/jpeg', 0.8); // Якість 0.8 для JPG
-          setOutputImage(newImage);
-        } else if (outputFormat === 'PNG') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/png');
-          setOutputImage(newImage);
-        } else if (outputFormat === 'GIF') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/gif');
-          setOutputImage(newImage);
-        } else if (outputFormat === 'BMP') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/bmp');
-          setOutputImage(newImage);
-        } else if (outputFormat === 'WEBP') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/webp');
-          setOutputImage(newImage);
-        } else if (outputFormat === 'TIFF') {
-          ctx.drawImage(img, 0, 0);
-          const newImage = canvas.toDataURL('image/tiff');
-          setOutputImage(newImage);
-        }
-
-        // Після конвертації, встановлюємо нові розміри
-        setOutputSize({
-          width: img.width,
-          height: img.height,
-          size: Math.round(img.width * img.height * 0.5), // Розмір приблизно, для демонстрації
+      try {
+        const response = await fetch('http://localhost:5000/convert-image', {
+          method: 'POST',
+          body: formData,
         });
-      };
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          setOutputImage(url);
+          const newImageSize = blob.size;
+
+          setOutputSize({
+            width: imageSize.width,
+            height: imageSize.height,
+            size: newImageSize,
+          });
+        } else {
+          console.error('Conversion failed:', await response.json());
+        }
+      } catch (error) {
+        console.error('Error converting image:', error);
+      }
     }
   };
 
@@ -103,10 +89,7 @@ const Editor = () => {
           >
             <option>JPG</option>
             <option>PNG</option>
-            <option>GIF</option>
-            <option>BMP</option>
             <option>WEBP</option>
-            <option>TIFF</option>
           </select>
         </div>
 

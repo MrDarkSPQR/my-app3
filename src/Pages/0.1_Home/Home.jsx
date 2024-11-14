@@ -32,9 +32,7 @@ const HomePages = () => {
         <button className="register" onClick={openRegisterModal}>Зареєструватись</button>
       </div>
 
-      {/* Передаємо відкриття та закриття модалки в Register */}
       <Register isOpen={isRegisterOpen} onClose={closeRegisterModal} />
-      {/* Передаємо відкриття та закриття модалки в Login */}
       <Login isOpen={isLoginOpen} onClose={closeLoginModal} />
     </div>
   );
